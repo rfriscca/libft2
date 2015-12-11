@@ -6,7 +6,7 @@
 #    By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/04 12:28:48 by rfriscca          #+#    #+#              #
-#    Updated: 2015/12/10 14:50:40 by rfriscca         ###   ########.fr        #
+#    Updated: 2015/12/11 17:34:57 by rfriscca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,7 @@ SRC  = \
        ft_toupper.c \
 	   ft_lstnew.c \
 	   ft_lstdelone.c \
+	   ft_lstdel.c \
 	   ft_tab_alloc.c
 
 OBJ  = $(SRC:.c=.o)

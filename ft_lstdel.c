@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/10 12:33:51 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/11 17:30:48 by rfriscca         ###   ########.fr       */
+/*   Created: 2015/12/11 17:32:33 by rfriscca          #+#    #+#             */
+/*   Updated: 2015/12/11 17:48:20 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void const *content, size_t content_size)
+void	ft_lstdel(t_list **alst, void (*del)(void*, size_t))
 {
-	t_list	*new;
-
-	if ((new = (t_list*)malloc(sizeof(*new))) == NULL)
-		return (NULL);
-	if (content == 0)
-	{
-		new->content = NULL;
-		new->content_size = 0;
-		return (new);
-	}
-	if ((new->content = (void*)malloc(content_size)) == NULL)
-		return (NULL);
-	ft_memmove(new->content, content, content_size);
-	new->content_size = content_size;
-	new->next = NULL;
-	return (new);
+	if ((*alst)->next)
+		ft_lstdel(&(*alst)->next, del);
+	ft_lstdelone(alst, del);
 }
