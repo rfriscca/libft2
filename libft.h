@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 16:14:57 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/11 17:34:22 by rfriscca         ###   ########.fr       */
+/*   Updated: 2015/12/15 16:48:42 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,9 @@ char				*ft_strtrim(char const *s);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 char				**ft_tab_alloc(int l, int c);
+void				ft_tabiter(char **tab, char *(*f)(char*));
+void				ft_aff_tab(char **tab, int start, int end);
+int					ft_power(int n, int pow);
 
 typedef struct		s_list
 {
@@ -81,4 +84,19 @@ typedef struct		s_list
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void*, size_t));
+void				ft_lstadd(t_list **alst, t_list *new);
+void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+
+typedef struct		s_tree
+{
+	void			*content;
+	size_t			content_size;
+	struct s_tree	*right;
+	struct s_tree	*left;
+}					t_tree;
+
+t_tree				*ft_newnode(void const *content, size_t content_size);
+void				ft_delnode(t_tree *node);
+void				ft_deltree(t_tree *node);
 #endif

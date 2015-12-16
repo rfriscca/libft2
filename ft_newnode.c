@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_newnode.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/10 12:33:51 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/15 16:11:21 by rfriscca         ###   ########.fr       */
+/*   Created: 2015/12/15 16:07:31 by rfriscca          #+#    #+#             */
+/*   Updated: 2015/12/15 16:15:51 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void const *content, size_t content_size)
+t_tree	*ft_newnode(void const *content, size_t content_size)
 {
-	t_list	*new;
+	t_tree	*newnode;
 
-	if ((new = (t_list*)malloc(sizeof(*new))) == NULL)
+	if ((newnode = (t_tree*)malloc((sizeof(*newnode)))) == NULL)
 		return (NULL);
 	if (content == 0)
 	{
-		new->content = NULL;
-		new->content_size = 0;
-		new->next = NULL;
-		return (new);
+		newnode->content = NULL;
+		newnode->content_size = 0;
 	}
-	if ((new->content = (void*)malloc(content_size)) == NULL)
-		return (NULL);
-	ft_memmove(new->content, content, content_size);
-	new->content_size = content_size;
-	new->next = NULL;
-	return (new);
+	else
+	{
+		if ((newnode->content = (void*)malloc(content_size)) == NULL)
+			return (NULL);
+		ft_memmove(newnode->content, content, content_size);
+		newnode->content_size = content_size;
+	}
+	newnode->right = NULL;
+	newnode->left = NULL;
+	return (newnode);
 }

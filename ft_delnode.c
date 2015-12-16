@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_delnode.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 14:44:09 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/16 11:36:51 by rfriscca         ###   ########.fr       */
+/*   Created: 2015/12/15 16:36:23 by rfriscca          #+#    #+#             */
+/*   Updated: 2015/12/16 11:30:11 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_delnode(t_tree *node)
 {
-	size_t		i;
-
-	i = 0;
-	if (n == 0)
-		return (0);
-	while (i < n - 1 && *s1 == *s2)
-	{
-		i++;
-		s1++;
-		s2++;
-		if (!*s1 || !*s2)
-			return (*(unsigned char*)s1 - *(unsigned char*)s2);
-	}
-	return (*(unsigned char*)s1 - *(unsigned char*)s2);
+	ft_bzero(node->content, node->content_size);
+	free(node->content);
+	node->content = NULL;
+	node->content_size = 0;
+	free(node);
+	node = NULL;
 }

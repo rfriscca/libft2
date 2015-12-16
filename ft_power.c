@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_power.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 14:44:09 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/16 11:36:51 by rfriscca         ###   ########.fr       */
+/*   Created: 2015/12/15 14:33:27 by rfriscca          #+#    #+#             */
+/*   Updated: 2015/12/15 14:55:04 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+int		ft_power(int n, int pow)
 {
-	size_t		i;
+	int		i;
+	int		n2;
 
-	i = 0;
-	if (n == 0)
-		return (0);
-	while (i < n - 1 && *s1 == *s2)
+	i = 1;
+	if (pow == 0)
+		n2 = 1;
+	if (pow > 0)
+		n2 = n;
+	if (pow < 0)
+		ft_putstr("Error ft_power don't handle negative power cases");
+	while (i < pow)
 	{
-		i++;
-		s1++;
-		s2++;
-		if (!*s1 || !*s2)
-			return (*(unsigned char*)s1 - *(unsigned char*)s2);
+		n2 = n2 * n;
+		++i;
 	}
-	return (*(unsigned char*)s1 - *(unsigned char*)s2);
+	return (n2);
 }

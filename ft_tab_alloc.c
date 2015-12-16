@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 15:26:42 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/10 14:36:58 by rfriscca         ###   ########.fr       */
+/*   Updated: 2015/12/15 15:02:54 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ char	**ft_tab_alloc(int l, int c)
 	int		i;
 
 	i = 0;
-	tab = (char**)malloc(sizeof(tab) * l + 1);
+	if ((tab = (char**)malloc(sizeof(tab) * l + 1)) == NULL)
+		return (NULL);
 	while (i < l)
 	{
-		tab[i] = ft_strnew(c);
+		if ((tab[i] = ft_strnew(c)) == NULL)
+			return (NULL);
 		i++;
 	}
-	tab[i] = "end_of_tab";
+	tab[i] = NULL;
 	return (tab);
 }

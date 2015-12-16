@@ -6,21 +6,19 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 14:41:30 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/11 15:11:55 by rfriscca         ###   ########.fr       */
+/*   Updated: 2015/12/14 17:30:46 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**ft_taballoc_line(char **tab, char const *s, char c)
+static char	**ft_taballoc_line(char **tab, char const *s, char c, int k)
 {
 	int		i;
 	int		j;
-	int		k;
 
 	i = 0;
 	j = 0;
-	k = 0;
 	while (s[i])
 	{
 		while (s[i] == c && s[i])
@@ -58,7 +56,7 @@ static char	**ft_taballoc(char const *s, char c)
 	}
 	if ((tab = (char**)malloc((j + 1) * sizeof(*tab))) == NULL)
 		return (NULL);
-	if ((tab = ft_taballoc_line(tab, s, c)) == NULL)
+	if ((tab = ft_taballoc_line(tab, s, c, 0)) == NULL)
 		return (NULL);
 	return (tab);
 }
