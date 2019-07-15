@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 13:24:06 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/31 13:29:07 by rfriscca         ###   ########.fr       */
+/*   Updated: 2015/12/03 18:11:10 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	*ft_memalloc(size_t size)
 		return (NULL);
 	while (i < size)
 	{
-		((char*)mem)[i] = 0;
-		++i;
+		((int*)mem)[i] = 0;
+		i++;
 	}
 	return (mem);
 }
